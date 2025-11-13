@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import sampleData from "@/db/sample-data";
 import ProductList, {
   TProduct,
 } from "@/components/shared/product/product-list";
+import { getLatestProducts } from "@/lib/actions/product.action";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -12,11 +12,15 @@ export const metadata: Metadata = {
 // const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const homepage = async () => {
-  const products = sampleData?.products as TProduct[];
+  // const products = sampleData?.products as TProduct[];
+  const latestProducts = await getLatestProducts();
   // await delay(2000);
   return (
     <>
-      <ProductList data={products} title="Newest Arrivals" limit={4} />
+      <ProductList
+        data={latestProducts as unknown as TProduct[]}
+        title="Newest Arrivals"
+      />
     </>
   );
 };
