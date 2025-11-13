@@ -1,8 +1,8 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { TProduct } from "./product-list";
 import Link from "next/link";
 import Image from "next/image";
 import ProductPrice from "./product-price";
+import { TProduct } from "@/types";
 
 const ProductCard = ({ product }: { product: TProduct }) => {
   return (

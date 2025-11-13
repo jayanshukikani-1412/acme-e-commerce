@@ -1,8 +1,6 @@
 import "dotenv/config";
-import { PrismaClient } from "../lib/generated/prisma/client";
+import { prisma } from "@/db/prisma";
 import sampleData from "./sample-data";
-
-const prisma = new PrismaClient();
 
 async function main() {
   await prisma.product.deleteMany();
